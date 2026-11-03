@@ -23,6 +23,8 @@ order by r.created_at desc, r.id;
 ## What it teaches
 
 - Lowercase SQL syntax without changing literals or quoted identifiers.
+- Leading underscores for new routine input parameters and local variables to
+  avoid clashes with table/column names; existing names survive formatting.
 - Leading commas and next-line declaration parentheses forming a left-hand
   punctuation gutter.
 - Two-space nesting and clause-aligned queries.

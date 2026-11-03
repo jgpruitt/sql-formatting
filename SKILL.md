@@ -50,6 +50,14 @@ Use lowercase `snake_case` for newly authored identifiers when naming is in scop
 Do not rename existing identifiers as formatting. Preserve quoted identifiers
 exactly, and preserve case-sensitive unquoted names where the dialect requires it.
 
+Prefix newly authored routine input parameters and local variables with a leading
+underscore: `_id`, `_include_hidden`, `_changed`. This distinguishes them from
+table and column names and avoids name-resolution clashes in SQL and PL/pgSQL;
+for example, `where r.id = _id` clearly compares a column with a parameter.
+Keep table/column names and public result-column names (such as `returns table`
+columns) unprefixed. Apply this naming convention when authoring new names or
+when renaming is explicitly requested, not during formatting-only work.
+
 Do not lowercase string contents: `tg_op = 'DELETE'`, `'UTC'`, JSON keys, regexes,
 messages, and SQLSTATEs remain unchanged. Do not case-fold psql variables,
 metacommand arguments, or template directives. Format dollar-quoted routine
