@@ -1,0 +1,17 @@
+{
+  "skill_name": "sql-formatting",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Format this SQL in John's style without changing its behavior: CREATE TABLE app.sample (id BIGINT PRIMARY KEY, label TEXT NOT NULL, note TEXT DEFAULT 'Keep CASE', UNIQUE (label, note)); WITH picked AS (SELECT id, label FROM app.sample WHERE label <> 'NULL' AND note IS NOT NULL) SELECT id, label, 'SELECT X' AS marker FROM picked ORDER BY id DESC;",
+      "expected_output": "Lowercase SQL syntax; next-line table opener with first item after '( '; leading commas in expanded lists; standalone CTE opener; two-space nesting; aligned query clauses; literal contents and column/constraint ordering unchanged. Compact projections are acceptable.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Format this PL/pgSQL routine in John's style, preserving its existing delimiter, assignment operator, and attributes: CREATE OR REPLACE FUNCTION app.mark(_id BIGINT, _label TEXT) RETURNS BOOLEAN AS $body$ DECLARE _ok BOOLEAN; BEGIN IF _label IS NULL THEN RAISE EXCEPTION 'Label REQUIRED'; END IF; UPDATE app.sample SET label = _label, note = 'UPDATE' WHERE id = _id; _ok := FOUND; RETURN _ok; END; $body$ LANGUAGE plpgsql VOLATILE;",
+      "expected_output": "Lowercase SQL/PLpgSQL syntax; expanded signature with leading commas; declare/begin/end aligned with declaration; two-space statement nesting and four-space if body; expanded update assignments with leading commas; $body$, :=, messages, and volatility preserved; no invented security/search_path attributes.",
+      "files": []
+    }
+  ]
+}
