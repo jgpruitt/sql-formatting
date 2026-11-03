@@ -1,8 +1,7 @@
 # SQL formatting
 
 An Agent Skill for writing and reviewing SQL in John Pruitt's preferred style.
-It captures conventions developed over more than 20 years and documented through
-review of 83 SQL files, roughly 8,000 lines, in Memory Engine.
+It captures conventions developed over more than 20 years of writing SQL.
 
 ```sql
 create table app.example
@@ -35,8 +34,8 @@ order by r.created_at desc, r.id;
 The instructions explain why the conventions help: visible structure, local
 edits, and readable diffs. They distinguish defaults from established local
 variants. This is a formatting skill, not a database-design guide, query
-optimizer, or executable formatter. It does not execute SQL or require access to
-Memory Engine.
+optimizer, or executable formatter. It does not execute SQL or require access to any external project or
+service.
 
 ## Install
 
@@ -95,12 +94,10 @@ required. Use the Skills CLI or your agent's documented skill installation metho
 | --- | --- |
 | [`SKILL.md`](SKILL.md) | Formatting rules, rationale, and preservation workflow |
 | [`references/examples.md`](references/examples.md) | Synthetic worked examples |
-| [`references/evidence.md`](references/evidence.md) | Source observations, provenance, and accepted variants |
 | [`evals/evals.json`](evals/evals.json) | Two reusable formatting smoke-test prompts |
 
-The source references are historical provenance, not dependencies. The examples
-illustrate presentation; their types and routine attributes are not universal
-schema recommendations.
+The examples illustrate presentation; their types and routine attributes are
+not universal schema recommendations.
 
 ## Validation
 

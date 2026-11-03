@@ -1,7 +1,7 @@
 ---
 name: sql-formatting
 license: MIT
-description: "Write, format, and review SQL in John's preferred style: lowercase syntax, leading commas, two-space nesting, and next-line opening parentheses. Use whenever authoring or editing SQL, PostgreSQL DDL, queries, migrations, SQL/PLpgSQL routines, or embedded SQL; especially for requests to format SQL, match John's SQL style, or follow the Memory Engine SQL conventions. This governs presentation, not database design or query optimization."
+description: "Write, format, and review SQL in John's preferred style: lowercase syntax, leading commas, two-space nesting, and next-line opening parentheses. Use whenever authoring or editing SQL, PostgreSQL DDL, queries, migrations, SQL/PLpgSQL routines, or embedded SQL; especially for requests to format SQL or match John's SQL style. This governs presentation, not database design or query optimization."
 ---
 
 # John's SQL formatting
@@ -17,9 +17,8 @@ between permitted layouts, prefer the one that serves those goals without
 changing semantics.
 
 Read `references/examples.md` for expanded DML, joins, expressions, routines,
-and preservation examples. Read `references/evidence.md` only when investigating
-why a rule exists or resolving a discrepancy with the historical source.
-Neither Memory Engine access nor its checkout is required to use this skill.
+and preservation examples. This skill is self-contained and requires no
+external project or service.
 
 ## Scope and precedence
 
@@ -236,7 +235,7 @@ $func$ language sql stable
   their opening keywords.
 - Short `if ... then` stays together; long conditions can break before `and` /
   `or`, with `then` on a separate line. Use blank lines between logical phases.
-- Both `=` and `:=` assignments occur in the source. Preserve the local choice;
+- Both `=` and `:=` assignments are accepted. Preserve the local choice;
   do not convert one into the other as formatting.
 
 ## Comments and terminators
@@ -253,9 +252,9 @@ line. Existing explanatory paragraph comments before a list item can remain.
 Align related inline comments when useful. Preserve comment contents and
 attachment; a `--` comment must not accidentally swallow following SQL.
 
-For major routine sections, the source often uses a heading between two
-79-hyphen lines. Follow that convention in sectioned files, but don't add banners
-to every small query.
+For major routine sections, a heading between two 79-hyphen lines is an
+accepted convention. Follow it in sectioned files, but don't add banners to every
+small query.
 
 Simple DDL ends with `);`; short statements end inline. A long executable query
 or mutation in a procedural body may use a standalone `;` aligned with the

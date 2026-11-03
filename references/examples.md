@@ -110,8 +110,8 @@ select
 from app.record r;
 ```
 
-An expression case can expand this way. Procedural `case` blocks in the source
-also use `when` aligned with `case`; preserve the existing block's convention.
+An expression case can expand this way. Procedural `case` blocks may instead
+use `when` aligned with `case`; preserve the existing block's convention.
 
 ## PL/pgSQL
 
