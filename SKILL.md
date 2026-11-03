@@ -252,7 +252,7 @@ line. Existing explanatory paragraph comments before a list item can remain.
 Align related inline comments when useful. Preserve comment contents and
 attachment; a `--` comment must not accidentally swallow following SQL.
 
-For major routine sections, a heading between two 79-hyphen lines is an
+For major routine sections, a heading between two 80-hyphen lines is an
 accepted convention. Follow it in sectioned files, but don't add banners to every
 small query.
 
