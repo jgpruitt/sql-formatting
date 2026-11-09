@@ -246,6 +246,30 @@ $func$ language sql stable
 - Both `=` and `:=` assignments are accepted. Preserve the local choice;
   do not convert one into the other as formatting.
 
+## Multiline SQL string literals
+
+Prefer `$sql$ ... $sql$` dollar quoting for newly authored multiline string
+literals that contain SQL, especially in `execute` and `format(...)` calls.
+This keeps embedded SQL readable without escaping its single quotes. Keep
+`$func$` for routine bodies; `$sql$` identifies SQL text inside those bodies.
+
+```sql
+execute format
+( $sql$
+    select r.id
+    from %I.record r
+    where r.name = $1
+  $sql$
+, _schema
+) into _id using _name;
+```
+
+Use the same quoting for multiline SQL passed directly to `execute`. Preserve
+existing quoting and literal contents during formatting-only work unless the
+user requests a change. If the contents include `$sql$`, use a distinct tag to
+avoid ending the string early. Preserve `format` placeholders and `execute`
+parameter bindings.
+
 ## Comments and terminators
 
 Use `-- ` comments for explanations and blank lines between logical sections.

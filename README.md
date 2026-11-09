@@ -31,6 +31,8 @@ order by r.created_at desc, r.id;
 - Leading boolean connectives, with parentheses preserving logical grouping.
 - Selective compactness and alignment rather than rigid expansion or padding.
 - SQL/PLpgSQL routine, CTE, DML, comment, and terminator conventions.
+- `$sql$ ... $sql$` quoting for new multiline SQL strings, especially in
+  `execute` and `format(...)`.
 - Preservation of template markers, psql commands, and language boundaries.
 
 The instructions explain why the conventions help: visible structure, local
